@@ -24,6 +24,12 @@
                      </td>
                   </tr>
                   <tr>
+                     <th>登録日時</th>
+                     <td>
+                        <fmt:formatDate value="${report.created_at }" pattern="yyyy-MM-dd HH:mm:ss" />
+                     </td>
+                  </tr>
+                  <tr>
                      <th>更新日時</th>
                      <td>
                         <fmt:formatDate value="${report.updated_at }" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -32,14 +38,14 @@
                </tbody>
             </table>
 
-            <c:if test="${sessionScope.login_emlpoyee.id==report.employee.id }">
-               <p><a href="<c:url value="/reports/edit?id=${report.id }" />">この日報を編集する</a></p>
-            </c:if>
-         </c:when>
-         <c:otherwise>
-            <h2>お探しのデータは見つかりませんでした。</h2>
-         </c:otherwise>
-      </c:choose>
+            <c:if test="${sessionScope.login_employee.id == report.employee.id}">
+                    <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>
+                </c:if>
+            </c:when>
+            <c:otherwise>
+                <h2>お探しのデータは見つかりませんでした。</h2>
+            </c:otherwise>
+         </c:choose>
 
       <p><a href="<c:url value="/reports/index" />">一覧に戻る</a></p>
    </c:param>
